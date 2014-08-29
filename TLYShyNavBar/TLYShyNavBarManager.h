@@ -48,6 +48,8 @@
 
 - (void)setExtensionView:(UIView *)view;
 
+@property (nonatomic, getter = isShyMode) BOOL shyMode;
+
 @end
 
 

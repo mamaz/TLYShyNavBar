@@ -83,17 +83,20 @@ static inline CGFloat AACStatusBarHeight()
         [self _resetCacheVariables];
         
         self.navBarController = [[TLYShyViewController alloc] init];
-        self.navBarController.hidesSubviews = YES;
+        self.navBarController.hidesSubviews = self.isShyMode;
+        self.navBarController.hidesAfterContraction = self.isShyMode;
         self.navBarController.expandedCenter = ^(UIView *view)
         {
             return CGPointMake(CGRectGetMidX(view.bounds),
                                CGRectGetMidY(view.bounds) + AACStatusBarHeight());
         };
         
+        __weak __typeof__(self) weakSelf = self;
+        
         self.navBarController.contractionAmount = ^(UIView *view)
         {
-//            return CGRectGetHeight(view.bounds);
-            return (CGFloat)0.0;
+            __typeof__(self) strongSelf = weakSelf;
+            return strongSelf.isShyMode ? CGRectGetHeight(view.bounds) : (CGFloat)0.0;
         };
         
         self.extensionViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100.f, 0.f)];
@@ -108,7 +111,6 @@ static inline CGFloat AACStatusBarHeight()
             return CGRectGetHeight(view.bounds);
         };
         
-        __weak __typeof(self) weakSelf = self;
         self.extensionController.expandedCenter = ^(UIView *view)
         {
             return CGPointMake(CGRectGetMidX(view.bounds),
