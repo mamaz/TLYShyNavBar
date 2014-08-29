@@ -92,7 +92,8 @@ static inline CGFloat AACStatusBarHeight()
         
         self.navBarController.contractionAmount = ^(UIView *view)
         {
-            return CGRectGetHeight(view.bounds);
+//            return CGRectGetHeight(view.bounds);
+            return (CGFloat)0.0;
         };
         
         self.extensionViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100.f, 0.f)];
