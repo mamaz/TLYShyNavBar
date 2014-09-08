@@ -196,21 +196,7 @@ static inline CGFloat AACStatusBarHeight()
     {
         UINavigationController *navController = self.viewController.navigationController;
         [navController setNavigationBarHidden:YES animated:YES];
-        navController.didShyNavBarManagerHideNavBar = YES;
-        
-        UIView *snapshotView = [self.viewController.view.window snapshotViewAfterScreenUpdates:NO];
-        
-        CGRect clippingFrame = snapshotView.frame;
-        clippingFrame.size.height = AACStatusBarHeight();
-        
-        UIView *clippingView = [[UIView alloc] initWithFrame:clippingFrame];
-        clippingView.backgroundColor = [UIColor clearColor];
-        clippingView.clipsToBounds = YES;
-        
-        [clippingView addSubview:snapshotView];
-        [self.viewController.view addSubview:clippingView];
-        
-        self.statusBarBackgroundView = clippingView;
+        navController.didShyNavBarManagerHideNavBar = YES;        
     }
     
     self.viewControllerVisible = NO;

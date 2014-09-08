@@ -35,9 +35,6 @@
      
     /* Library code */
     self.shyNavBarManager.scrollView = self.scrollView;
-//    self.shyNavBarManager.expansionResistance = 50;
-//    self.shyNavBarManager.contractionResistance = 0;
-//    self.shyNavBarManager.shyMode = NO;
     
     /* Can then be remove by setting the ExtensionView to nil */
     [self.shyNavBarManager setExtensionView:view];
